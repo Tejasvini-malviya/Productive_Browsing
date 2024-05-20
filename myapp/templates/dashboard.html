@@ -1,0 +1,33 @@
+<!-- dashboard.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+</head>
+<body>
+    <h1>Dashboard</h1>
+    <h2>Restricted Sites</h2>
+    <ul>
+        {% for site in restricted_sites %}
+            <li>{{ site.url }} <a href="/delete_restricted_site/site.id/">Delete</a></li>
+        {% endfor %}
+    </ul>
+    <a href="/add_restricted_site/">Add Restricted Site</a>
+
+    <h2>Time Limits</h2>
+    <ul>
+        {% for limit in time_limits %}
+            <li>{{ limit.url }}: {{ limit.time_limit }} minutes <a href="/delete_time_limit/limit.id/">Delete</a></li>
+        {% endfor %}
+    </ul>
+    <a href="/add_time_limit/">Add Time Limit</a>
+
+    <h2>Usage Logs</h2>
+    <ul>
+        {% for log in usage_logs %}
+            <li>{{ log.url }}: {{ log.time_spent }} seconds on {{ log.visit_date }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
